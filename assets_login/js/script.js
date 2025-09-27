@@ -1,4 +1,4 @@
-// assets/js/script.js
+// assets_login/js/script.js
 document.addEventListener('DOMContentLoaded', function () {
   const pwd = document.getElementById('password');
   const eyeIcon = document.getElementById('eyeIcon');

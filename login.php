@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- Font Awesome for eye icons (CDN) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- External stylesheet -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=1.0">
+    <link rel="stylesheet" href="assets_login/css/styles.css?v=1.0">
 </head>
 <body>
     <div class="container">
@@ -71,6 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 
     <!-- External JavaScript -->
-    <script src="assets/js/script.js" defer></script>
+    <script src="assets_loginjs/script.js" defer></script>
 </body>
 </html>

@@ -8,10 +8,9 @@ if (!isset($_SESSION['username'])) {
 $showPopup = false;
 if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
     $showPopup = true;
-    unset($_SESSION['login_success']); // para isang beses lang lumabas
+    unset($_SESSION['login_success']); // show popup only once
 }
 ?>
-
 
 <?php
 // Resume Data
@@ -33,20 +32,20 @@ $education = [
     [
         "level" => "Senior High School",
         "school" => "Dr. Juan A. Pastor Integrated National High School",
-        "degree" => "STEM",
-        "date" => "2021 – 2023"
+        "degree" => "Science, Technology, English, and Mathematics",
+        "date" => "2021 - 2023"
     ],
     [
         "level" => "Junior High School",
         "school" => "Dr. Juan A. Pastor Integrated National High School",
         "degree" => "",
-        "date" => "2017 – 2021"
+        "date" => "2017 - 2021"
     ],
     [
         "level" => "Elementary",
         "school" => "Piela Elementary School",
         "degree" => "",
-        "date" => "2011 – 2017"
+        "date" => "2011 - 2017"
     ]
 ];
 
@@ -60,7 +59,7 @@ $experience = [
     [
         "role" => "Intern",
         "company" => "BatStateU IT Department",
-        "date" => "July 2024 – September 2024",
+        "date" => "July 2024 - September 2024",
         "details" => [
             "Assisted in developing a student information system using PHP and MySQL.",
             "Performed debugging and troubleshooting for existing web applications.",
@@ -73,7 +72,7 @@ $activities = [
     [
         "organization" => "Junior Philippine Computer Society",
         "title" => "Director for Public Relations II",
-        "date" => "2025 – 2026",
+        "date" => "2025 - 2026",
         "details" => [
             "Coordinated with local organizations for partnerships and sponsorship opportunities."
         ]
@@ -91,14 +90,18 @@ $activities = [
         margin: 0;
         padding: 40px 0;
         font-family: "Times New Roman", serif;
+        background: #f0f0f0; /* light gray background to make paper stand out */
         display: flex;
-        justify-content: center; /* horizontally center */
+        justify-content: center;
     }
 
     .resume-container {
-        width: 210mm;      /* approximate A4 width */
+        width: 210mm;       /* exact A4 width */
+        min-height: 297mm;  /* exact A4 height */
         padding: 40px 50px;
-        background: #fff;  /* keep white */
+        background: #fff;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2); /* shadow like a real paper */
+        border: 1px solid #ccc;
     }
 
     h1 { 
@@ -135,7 +138,7 @@ $activities = [
         background: #28a745;
         color: white;
         padding: 10px 20px;
-        border-radius: 25px; /* rounded like bubble */
+        border-radius: 25px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: bold;
         box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
@@ -145,12 +148,12 @@ $activities = [
     }
 
     .popup.show {
-        top: 20px;      /* slide down */
+        top: 20px;      
         opacity: 1;
     }
 
     .popup.hide {
-        top: -80px;     /* slide back up */
+        top: -80px;     
         opacity: 0;
     }
 
@@ -159,19 +162,20 @@ $activities = [
         top: 20px;
         right: 20px;
         padding: 10px 20px;
-        background: #e0e0e0;  /* light gray */
-        color: #d9534f;       /* bootstrap red */
+        background: #e0e0e0;
+        color: #d9534f;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: bold;
         text-decoration: none;
         border-radius: 8px;
         transition: all 0.3s ease;
         box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+        z-index: 1100;
     }
     .logout-btn:hover {
-        background: #d6d6d6;   /* darker gray hover */
-        color: #b52b27;        /* darker red */
-        transform: scale(1.05); /* pop effect */
+        background: #d6d6d6;
+        color: #b52b27;
+        transform: scale(1.05);
     }
 </style>
 </head>
@@ -254,23 +258,19 @@ $activities = [
 
 </div> <!-- end resume-container -->
 
-    <?php if ($showPopup): ?>
-        <div id="successPopup" class="popup">✅ Login Successful</div>
-        <script>
-            const popup = document.getElementById("successPopup");
-            popup.classList.add("show");
-            setTimeout(() => {
-                popup.classList.remove("show");
-                popup.classList.add("hide");
-            }, 2500);
-        </script>
-    <?php endif; ?>
+<?php if ($showPopup): ?>
+    <div id="successPopup" class="popup">✅ Login Successful</div>
+    <script>
+        const popup = document.getElementById("successPopup");
+        popup.classList.add("show");
+        setTimeout(() => {
+            popup.classList.remove("show");
+            popup.classList.add("hide");
+        }, 2500);
+    </script>
+<?php endif; ?>
 
-    <br><br>
-    <p style="text-align:center; margin-top:30px;">
-        <a href="logout.php" class="logout-btn">Logout</a>
-    </p>
+<a href="logout.php" class="logout-btn">Logout</a>
     
 </body>
 </html>
-
